@@ -124,21 +124,12 @@ def send_message(message):
             item = types.KeyboardButton('yes')
             item2 = types.KeyboardButton('no')
             marcup.add(item, item2)
-            msg = bot.send_message(message.chat.id, f'возможна вы имели ввиду {get_close_matches(message.text.lower(), data.keys())[0]}',reply_markup=marcup)
-            bot.register_next_step_handler(msg, possible_options)
+            bot.send_message(message.chat.id, f'возможна вы имели ввиду {get_close_matches(message.text.lower(), data.keys())[0]}',reply_markup=marcup)
         else:
             bot.send_message(message.chat.id, 'Нет такого слова')
 
 
-def possible_options(message):
-    with open('file.json', 'r') as file:
-        data = json.load(file)
-    if message.text.lower() == 'yes':
-        return data[get_close_matches(word, data.keys())[0]]
-    elif message.text.lower() == 'no':
-        return 'нет такого слова'
-    else:
-        return "я тебя не понял "
+
 
 
 bot.polling()
