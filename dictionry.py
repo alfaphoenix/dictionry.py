@@ -3,7 +3,7 @@ from telebot import types
 import json
 from difflib import get_close_matches
 
-token = '1540317534:AAHrueslYzrX4G4bSIvdowGxZM-On1jdH0c'
+token = ''
 
 bot = telebot.TeleBot(token)
 
